@@ -1,0 +1,54 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Ankush Jamdagani personal portfolio",
+  "main": "src/index.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack -d --progress --colors",
+    "prod": "./node_modules/.bin/webpack -p --progress --colors",
+    "watch": "./node_modules/.bin/webpack -d --progress --colors --watch",
+    "start": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline --watch-poll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankushjamdagani/portfolio.git"
+  },
+  "keywords": [
+    "reactjs",
+    "webpack",
+    "redux",
+    "react-router",
+    "javascript",
+    "html",
+    "scss",
+    "portfolio",
+    "spa"
+  ],
+  "author": "Ankush Jamdagani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ankushjamdagani/portfolio/issues"
+  },
+  "homepage": "https://github.com/ankushjamdagani/portfolio#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0"
+  }
+}
