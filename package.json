@@ -2,13 +2,13 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Ankush Jamdagani personal portfolio",
-  "main": "src/index.jsx",
+  "main": "./src/index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/webpack -d --progress --colors",
     "prod": "./node_modules/.bin/webpack -p --progress --colors",
     "watch": "./node_modules/.bin/webpack -d --progress --colors --watch",
-    "start": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline --watch-poll"
+    "start": "./node_modules/.bin/webpack-dev-server --progress --colors --hot --inline"
   },
   "repository": {
     "type": "git",

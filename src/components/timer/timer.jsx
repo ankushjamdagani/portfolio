@@ -6,9 +6,9 @@ class Timer extends React.Component {
 		super(props);
 
 		this.state = {
-			tdays: 0, 
-			thours: 0, 
-			tminutes: 0, 
+			tdays: 0,
+			thours: 0,
+			tminutes: 0,
 			tseconds: 0
 		}
 	}
@@ -16,7 +16,7 @@ class Timer extends React.Component {
 	componentWillMount() {
 		let intervalTime = this.props.interval;
 
-		let toDate = this.props.to ? this.props.to : Date.parse('July 1, 2017');
+		let toDate = this.props.to ? this.props.to : Date.parse('September 25, 2017');
 		let fromDate = this.props.from ? this.props.from : (new Date());
 
 		let time = toDate - fromDate;
@@ -34,9 +34,9 @@ class Timer extends React.Component {
 			tseconds = Math.abs(tseconds - intervalTime/1000);
 
 			this.setState({
-				tdays, 
-				thours, 
-				tminutes, 
+				tdays,
+				thours,
+				tminutes,
 				tseconds
 			});
 
