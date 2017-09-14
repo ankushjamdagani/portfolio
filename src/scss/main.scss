@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron:900');
 @import './third-party/reset.css';
+@import '~font-awesome/scss/_variables.scss';
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
 
 $bg: #111;
 $darker-grey: #333;
 $dark-grey: #666;
 $grey: #ccc;
 $light-grey: #eaeaea;
-$lighter-grey: #eaeaea;
+$lighter-grey: #f1f1f1;
 
-html, body, #root, .app {
+html, body {
 	height: 100%;
 }
 
@@ -17,13 +20,201 @@ body {
 	padding: 0;
 	position: relative;
 
-	background: $bg;
-	color: $dark-grey;
+	background: $lighter-grey;
 	// font-family: 'sans-serif';
 	font-size: 14px;
 }
 
+.clearfix:after {
+	content: '';
+	clear: both;
+	display: block;
+	height: 0;
+	width: 0;
+}
+
+#body-wrapper {
+	height: 100%;
+	background: $lighter-grey;
+}
+
+#window {
+	color: white;
+	height: 80%;
+	width: 80%;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #fafafa;
+
+	#window-head {
+		background: #7b04d7;
+		padding: .45em;
+
+		@extend .clearfix;
+
+		.right-controls {
+			float: right;
+			width: 2em;
+			text-align: center;
+
+		}
+
+		#device-toggle {
+
+			.dropdown-link {
+				border-radius: 2px;
+				font-size: 1.2em;
+				padding: .32em;
+
+				&:hover {
+					background: rgba(0,0,0,.2);
+					cursor: pointer;
+				}
+			}
+
+			.dropdown-list {
+				// width: 100px;
+				left: 0;
+				right: 0;
+
+				.device {
+					cursor: pointer;
+					padding: .5em;
+					position: relative;
+
+
+					&:after {
+						background: white;
+						content: '';
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						z-index: -1
+					}
+
+					&:hover:after {
+						background: #eee;
+					}
+
+					&:hover {
+						// color: white;
+					}
+				}
+			}
+		}
+
+		.window-controls {
+			float: left;
+			width: 5em;
+
+			@extend .clearfix;
+
+			.window-control {
+				padding: 0.75em;
+			    border-radius: 2px;
+			    float: left;
+			    font-size: 12px;
+
+				&:hover {
+					background: rgba(0,0,0,.2);
+					cursor: pointer;
+				}
+			}
+		}
+
+		.center-controls {
+			float: left;
+			width: calc(100% - 8.5em);
+		}
+
+		#search-bar {
+			border-radius: 2px;
+			background: $lighter-grey;
+			overflow: hidden;
+			margin: .1em 0;
+
+			input {
+				background: transparent;
+				border: none;
+				display: block;
+				font-size: .8em;
+				letter-spacing: 1px;
+				outline: none;
+				padding: .5em 1em;
+				width: 100%;
+			}
+		}
+	}
+
+	#window-body {
+		overflow: auto;
+		height: calc((100% - 45px - .2em))
+	}
+
+	#window-foot {
+		background: #333;
+		padding: .1em;
+	}
+
+	&.expanded {
+		height: 99%;
+		width: 99%;
+	}
+
+	&.minimised {
+		height: 1.5em;
+		left: 1em;
+		bottom: 0;
+		width: 100px;
+	}
+}
+
+.dropdown {
+	position: relative;
+
+	.dropdown-link {
+		cursor: pointer;
+		padding: .3em;
+		position: relative;
+	}
+
+	.dropdown-list {
+		background: white;
+		color: #333;
+		display: none;
+		border: solid 1px #eee;
+		border-radius: 3px;
+		position: absolute;
+		z-index: 99;
+		top: calc(100% + .5em);
+
+		&:after {
+			content: '';
+			background: #eee;
+			padding: .5em;
+			transform: rotate(45deg);
+			position: absolute;
+			top: -.5em;
+			right: 1em;
+			z-index: -2;
+		}
+	}
+
+	&.active .dropdown-list {
+		display: block;
+	}
+}
+
+
 .app {
+	background: #222;
 	border-left: solid 1em #000;
 	font-family: 'Orbitron', 'sans-serif';
 }
@@ -111,7 +302,7 @@ body {
     margin: 0 auto;
     padding: 2em 0;
     text-align: center;
-	
+
 	div {
 		background: #0e0e0e;
 		border: solid 10px #0a0a0a;
