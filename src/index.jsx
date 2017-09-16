@@ -7,5 +7,5 @@ import App from './app';
 
 ReactDOM.render(
 	<App/>,
-	document.getElementById('root-body')
+	document.getElementById('window-body')
 );

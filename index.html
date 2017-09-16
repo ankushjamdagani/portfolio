@@ -13,13 +13,13 @@
 		<div id="window">
 			<div id="window-head">
 				<div class="window-controls">
-					<!-- <div class="window-control">
-						<i class="fa fa-window-resize"></i>
-					</div> -->
-					<div class="window-control" data-action="MINIMIZE">
+					<div class="window-control reposition" draggable="true">
+						<i class="fa fa-arrows"></i>
+					</div>
+					<div class="window-control minimize" data-action="MINIMIZE">
 						<i class="fa fa-window-minimize"></i>
 					</div>
-					<div class="window-control" data-action="MAXIMIZE">
+					<div class="window-control maximize" data-action="MAXIMIZE">
 						<i class="fa fa-window-maximize"></i>
 						<i class="fa fa-window-restore"></i>
 					</div>
@@ -64,44 +64,41 @@
 			$(document).on('click', '.dropdown-link', function () {
 				$(this).closest('.dropdown').toggleClass('active')
 			})
-			//
-			// $('.window-control').on('click', function (e) {
-			// 	e.preventDefault();
-			// 	e.stopPropagation();
-			//
-			// 	$('#window').removeClass();
-			//
-			// 	let _ACTION = $(this).data('action');
-			// 	switch (_ACTION) {
-			// 		case 'MINIMIZE':
-			// 			$('#window').addClass('minimized');
-			// 			break;
-			// 		case 'MAXIMIZE':
-			// 			$('#window').addClass('maximized');
-			// 			$(this).data('action', 'RESTORE');
-			// 			break;
-			// 		case 'RESTORE':
-			// 			$(this).data('action', 'MAXIMIZE');
-			// 			// $('#window').addClass('maximized');
-			// 			break;
-			// 		default:
-			// 			break;
-			// 	}
-			// })
 
-			$('.window-control').on('dragstart', function () {
+			$('.window-control').on('click', function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+
+				$('#window').removeClass();
+
+				let _ACTION = $(this).data('action');
+				switch (_ACTION) {
+					case 'MINIMIZE':
+						$('#window').addClass('minimized');
+						break;
+					case 'MAXIMIZE':
+						$('#window').addClass('maximized');
+						$(this).data('action', 'RESTORE');
+						break;
+					case 'RESTORE':
+						$(this).data('action', 'MAXIMIZE');
+						// $('#window').addClass('maximized');
+						break;
+					default:
+						break;
+				}
+			})
+
+			$('.window-control.reposition').on('dragstart', function () {
 				$('#window').addClass('dragging')
 			})
 
 
-			$('.window-control').on('dragend', function () {
+			$('.window-control.reposition').on('dragend', function () {
 				$('#window').removeClass('dragging')
 			})
 
-			$('.window-control').on('drag', function (e) {
-				console.log(e);
-				console.log(e.clientX - 20);
-
+			$('.window-control.reposition').on('drag', function (e) {
 				if(e.clientX === 0)
 					return false;
 

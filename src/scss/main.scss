@@ -114,7 +114,7 @@ body {
 
 		.window-controls {
 			float: left;
-			width: 5em;
+			width: 6em;
 
 			@extend .clearfix;
 
@@ -127,6 +127,10 @@ body {
 				&:hover {
 					background: rgba(0,0,0,.2);
 					cursor: pointer;
+				}
+
+				i {
+					pointer-events: none;
 				}
 			}
 		}
