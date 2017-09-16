@@ -44,12 +44,14 @@ body {
 	width: 80%;
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
-	border-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 	overflow: hidden;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+	position: fixed;
+	// top: 50%;
+	// transform: translateY(-50%);
 	background: #fafafa;
+	transition: all .15s ease-in-out;
 
 	#window-head {
 		background: #7b04d7;
@@ -163,16 +165,53 @@ body {
 		padding: .1em;
 	}
 
-	&.expanded {
-		height: 99%;
-		width: 99%;
+	.fa-window-maximize {
+		display: initial;
 	}
 
-	&.minimised {
-		height: 1.5em;
-		left: 1em;
-		bottom: 0;
-		width: 100px;
+	.fa-window-restore {
+		display: none;
+	}
+
+	&.maximized {
+		height: 100%;
+		width: 100%;
+		border-radius: 0;
+
+		.fa-window-maximize {
+			display: none;
+		}
+
+		.fa-window-restore {
+			display: initial;
+		}
+	}
+
+	&.minimized {
+		height: 3em;
+	    left: 1em;
+	    top: calc(100% - 3em);
+	    bottom: 0;
+	    transform: none;
+	    width: 300px;
+	    // border-radius: 0;
+		margin-left: 0;
+
+		#window-body {
+			display: none;
+		}
+
+		#window-head > * {
+			display: none;
+		}
+
+		#window-head .window-controls {
+			display: block;
+		}
+	}
+
+	&.dragging {
+		transition: none;
 	}
 }
 

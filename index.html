@@ -3,7 +3,7 @@
 <head>
 	<title>Ankush Jamdagani | Portfolio</title>
 	<script
-  src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  src="src/third-party/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 	<style media="screen">
@@ -16,12 +16,12 @@
 					<!-- <div class="window-control">
 						<i class="fa fa-window-resize"></i>
 					</div> -->
-					<div class="window-control">
+					<div class="window-control" data-action="MINIMIZE">
 						<i class="fa fa-window-minimize"></i>
 					</div>
-					<div class="window-control">
+					<div class="window-control" data-action="MAXIMIZE">
 						<i class="fa fa-window-maximize"></i>
-						<!-- <i class="fa fa-window-restore"></i> -->
+						<i class="fa fa-window-restore"></i>
 					</div>
 				</div>
 				<div class="center-controls">
@@ -58,9 +58,59 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	$(document).on('click', '.dropdown-link', function () {
-		$(this).closest('.dropdown').toggleClass('active')
-	})
+
+		$(document).ready(function () {
+
+			$(document).on('click', '.dropdown-link', function () {
+				$(this).closest('.dropdown').toggleClass('active')
+			})
+			//
+			// $('.window-control').on('click', function (e) {
+			// 	e.preventDefault();
+			// 	e.stopPropagation();
+			//
+			// 	$('#window').removeClass();
+			//
+			// 	let _ACTION = $(this).data('action');
+			// 	switch (_ACTION) {
+			// 		case 'MINIMIZE':
+			// 			$('#window').addClass('minimized');
+			// 			break;
+			// 		case 'MAXIMIZE':
+			// 			$('#window').addClass('maximized');
+			// 			$(this).data('action', 'RESTORE');
+			// 			break;
+			// 		case 'RESTORE':
+			// 			$(this).data('action', 'MAXIMIZE');
+			// 			// $('#window').addClass('maximized');
+			// 			break;
+			// 		default:
+			// 			break;
+			// 	}
+			// })
+
+			$('.window-control').on('dragstart', function () {
+				$('#window').addClass('dragging')
+			})
+
+
+			$('.window-control').on('dragend', function () {
+				$('#window').removeClass('dragging')
+			})
+
+			$('.window-control').on('drag', function (e) {
+				console.log(e);
+				console.log(e.clientX - 20);
+
+				if(e.clientX === 0)
+					return false;
+
+				$('#window').css('left', (e.clientX - 20) + 'px')
+				$('#window').css('top', (e.clientY - 20) + 'px')
+
+			})
+		})
+
 	</script>
 	<script type="text/javascript" src="./dist/bundle.js"></script>
 </body>
