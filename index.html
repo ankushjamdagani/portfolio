@@ -10,10 +10,10 @@
 
 	</style>
 	<div id="body-wrapper">
-		<div id="window">
+		<div id="window" class="normal">
 			<div id="window-head">
 				<div class="window-controls">
-					<div class="window-control reposition" draggable="true">
+					<div class="window-control reposition" draggable="true" data-action="REPOSITION">
 						<i class="fa fa-arrows"></i>
 					</div>
 					<div class="window-control minimize" data-action="MINIMIZE">
@@ -21,6 +21,8 @@
 					</div>
 					<div class="window-control maximize" data-action="MAXIMIZE">
 						<i class="fa fa-window-maximize"></i>
+					</div>
+					<div class="window-control restore" data-action="RESTORE">
 						<i class="fa fa-window-restore"></i>
 					</div>
 				</div>
@@ -66,8 +68,7 @@
 			})
 
 			$('.window-control').on('click', function (e) {
-				e.preventDefault();
-				e.stopPropagation();
+				e.preventDefault();				e.stopPropagation();
 
 				$('#window').removeClass();
 
@@ -78,11 +79,12 @@
 						break;
 					case 'MAXIMIZE':
 						$('#window').addClass('maximized');
-						$(this).data('action', 'RESTORE');
 						break;
 					case 'RESTORE':
-						$(this).data('action', 'MAXIMIZE');
-						// $('#window').addClass('maximized');
+						// $(this).data('action', 'MAXIMIZE');
+						$('#window').addClass('normal');
+						break;
+					case 'REPOSITION':
 						break;
 					default:
 						break;
@@ -102,8 +104,18 @@
 				if(e.clientX === 0)
 					return false;
 
-				$('#window').css('left', (e.clientX - 20) + 'px')
-				$('#window').css('top', (e.clientY - 20) + 'px')
+				if($('#window').hasClass('maximized')) {
+					$('#window').css('left', (0) + 'px')
+					$('#window').css('top', (0) + 'px')
+
+					$('#window').removeClass('maximized')
+					$('#window').addClass('normal')
+				}
+				else {
+					$('#window.normal').css('left', (e.clientX - 20) + 'px')
+					$('#window.normal').css('top', (e.clientY - 20) + 'px')
+				}
+
 
 			})
 		})
