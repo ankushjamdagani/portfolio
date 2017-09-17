@@ -83,7 +83,7 @@
 					_x = __frameWidth * .2;
 
 					$('#window').css('width', _width + 'px');
-					$('#window').css('height', _height + 'ox');
+					$('#window').css('height', _height + 'px');
 					$('#window').css('left', _x + 'px');
 					$('#window').css('top', _y + 'px');
 				}
@@ -167,7 +167,35 @@
 							setSize(e.clientX - 20, e.clientY - 20);
 						}
 					})
+
+					$('.window-control.resize')
+					.on('dragstart', function () {
+						$('#window').addClass('resizing')
+					})
+					.on('dragend', function () {
+						$('#window').removeClass('resizing')
+					})
+					.on('drag', function (e) {
+						if(e.clientX === 0 || $('#window').hasClass('minimized'))
+							return false;
+
+						if($('#window').hasClass('maximized')) {
+							$('#window').css('left', (0) + 'px')
+							$('#window').css('top', (0) + 'px')
+
+							$('#window').removeClass('maximized')
+							$('#window').addClass('normal')
+							setSize(0, 0);
+						}
+						else {
+							// $('#window.normal').css('width', (e.clientX - 20) + 'px')
+							// $('#window.normal').css('height', (e.clientY - 20) + 'px')
+
+							// setSize(e.clientX - 20, e.clientY - 20);
+						}
+					})
 				}
+
 
 				_calculateInitialSize();
 				_bindEvents();
