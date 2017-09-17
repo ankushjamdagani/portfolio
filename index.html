@@ -19,11 +19,11 @@
 					<div class="window-control minimize" data-action="MINIMIZE">
 						<i class="fa fa-window-minimize"></i>
 					</div>
-					<div class="window-control maximize" data-action="MAXIMIZE">
-						<i class="fa fa-window-maximize"></i>
-					</div>
 					<div class="window-control restore" data-action="RESTORE">
 						<i class="fa fa-window-restore"></i>
+					</div>
+					<div class="window-control maximize" data-action="MAXIMIZE">
+						<i class="fa fa-window-maximize"></i>
 					</div>
 				</div>
 				<div class="center-controls">
@@ -67,58 +67,115 @@
 				$(this).closest('.dropdown').toggleClass('active')
 			})
 
-			$('.window-control').on('click', function (e) {
-				e.preventDefault();				e.stopPropagation();
+			let factoryWindow = function () {
+				let _x = 0,
+					_y = 0,
+					_width = 600,
+					_height = 480;
 
-				$('#window').removeClass();
+				let _calculateInitialSize = function () {
+					__frameWidth = $('body')[0].clientWidth;
+					__frameHeight = $('body')[0].clientHeight;
 
-				let _ACTION = $(this).data('action');
-				switch (_ACTION) {
-					case 'MINIMIZE':
-						$('#window').addClass('minimized');
-						break;
-					case 'MAXIMIZE':
-						$('#window').addClass('maximized');
-						break;
-					case 'RESTORE':
-						// $(this).data('action', 'MAXIMIZE');
-						$('#window').addClass('normal');
-						break;
-					case 'REPOSITION':
-						break;
-					default:
-						break;
+					_width = __frameWidth * .6;
+					_height = __frameHeight * .8;
+					_y = __frameHeight * .1;
+					_x = __frameWidth * .2;
+
+					$('#window').css('width', _width + 'px');
+					$('#window').css('height', _height + 'ox');
+					$('#window').css('left', _x + 'px');
+					$('#window').css('top', _y + 'px');
 				}
-			})
 
-			$('.window-control.reposition').on('dragstart', function () {
-				$('#window').addClass('dragging')
-			})
-
-
-			$('.window-control.reposition').on('dragend', function () {
-				$('#window').removeClass('dragging')
-			})
-
-			$('.window-control.reposition').on('drag', function (e) {
-				if(e.clientX === 0)
-					return false;
-
-				if($('#window').hasClass('maximized')) {
-					$('#window').css('left', (0) + 'px')
-					$('#window').css('top', (0) + 'px')
-
-					$('#window').removeClass('maximized')
-					$('#window').addClass('normal')
+				let setSize = function (x = _x, y = _y, w = _width, h = _height) {
+					_x = x;
+					_y = y;
+					_width = w;
+					_height = h;
 				}
-				else {
-					$('#window.normal').css('left', (e.clientX - 20) + 'px')
-					$('#window.normal').css('top', (e.clientY - 20) + 'px')
+
+				let getSize = function () {
+
+					return {
+						left: _x,
+						top: _y,
+						width: _width,
+						height: _height
+					}
 				}
 
 
-			})
+				let _bindEvents = function () {
+					$('.window-control').on('click', function (e) {
+						e.preventDefault();
+						e.stopPropagation();
+
+						$('#window').removeClass();
+
+						let _ACTION = $(this).data('action');
+						switch (_ACTION) {
+							case 'MINIMIZE':
+								$('#window').addClass('minimized');
+								$('#window').attr('style', '');
+								break;
+							case 'MAXIMIZE':
+								$('#window').addClass('maximized');
+								$('#window').attr('style', '');
+								break;
+							case 'RESTORE':
+								$('#window').addClass('normal');
+								let size = getSize();
+
+								for (var key in size) {
+									if (size.hasOwnProperty(key)) {
+										$('#window').css(key, size[key] + 'px')
+									}
+								}
+								break;
+							case 'REPOSITION':
+								$('#window').addClass('normal');
+								break;
+							default:
+								break;
+						}
+					})
+
+					$('.window-control.reposition')
+					.on('dragstart', function () {
+						$('#window').addClass('dragging')
+					})
+					.on('dragend', function () {
+						$('#window').removeClass('dragging')
+					})
+					.on('drag', function (e) {
+						if(e.clientX === 0 || $('#window').hasClass('minimized'))
+							return false;
+
+						if($('#window').hasClass('maximized')) {
+							$('#window').css('left', (0) + 'px')
+							$('#window').css('top', (0) + 'px')
+
+							$('#window').removeClass('maximized')
+							$('#window').addClass('normal')
+							setSize(0, 0);
+						}
+						else {
+							$('#window.normal').css('left', (e.clientX - 20) + 'px')
+							$('#window.normal').css('top', (e.clientY - 20) + 'px')
+
+							setSize(e.clientX - 20, e.clientY - 20);
+						}
+					})
+				}
+
+				_calculateInitialSize();
+				_bindEvents();
+			};
+
+			factoryWindow();
 		})
+
 
 	</script>
 	<script type="text/javascript" src="./dist/bundle.js"></script>
