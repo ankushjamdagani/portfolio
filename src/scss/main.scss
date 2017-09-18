@@ -102,14 +102,15 @@ body {
 			}
 
 			.dropdown-list {
-				// width: 100px;
-				left: 0;
+				// left: 0;
 				right: 0;
+				width: 120px;
 
 				.device {
 					cursor: pointer;
-					padding: .5em;
+					padding: 0.75em;
 					position: relative;
+					display: inline-block;
 
 
 					&:after {
@@ -265,12 +266,12 @@ body {
 
 		&:after {
 			content: '';
-			background: #eee;
+			background: #fff;
 			padding: .5em;
 			transform: rotate(45deg);
 			position: absolute;
 			top: -.5em;
-			right: 1em;
+			right: .5em;
 			z-index: -2;
 		}
 	}
@@ -282,8 +283,6 @@ body {
 
 
 .app {
-	// background: #222;
-	// border-left: solid 1em #000;
 	color: #333;
 	font-family: 'Orbitron', 'sans-serif';
 }
