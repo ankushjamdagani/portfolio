@@ -11,6 +11,10 @@ $grey: #ccc;
 $light-grey: #eaeaea;
 $lighter-grey: #f1f1f1;
 
+$primary-color: #7b04d7;
+$secondary-color: crimson;
+$cream: #ffe4c4;
+
 html, body {
 	height: 100%;
 }
@@ -65,18 +69,14 @@ body {
 	width: 80%;
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 	margin: 0 auto;
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
 	border-radius: 2px;
 	overflow: hidden;
 	position: fixed;
-	// top: 50%;
-	// transform: translateY(-50%);
 	background: #fafafa;
 	transition: all .15s ease-in-out;
 
 	#window-head {
-		background: #7b04d7;
+		background: $primary-color;
 		padding: .45em;
 
 		@extend .clearfix;
@@ -102,25 +102,27 @@ body {
 			}
 
 			.dropdown-list {
-				// left: 0;
+				width: 122px;
 				right: 0;
-				width: 120px;
+
+				@extend .clearfix;
 
 				.device {
+					border-bottom: solid 2px $cream;
 					cursor: pointer;
+					float: left;
 					padding: 0.75em;
 					position: relative;
-					display: inline-block;
-
+					width: 40px;
 
 					&:after {
 						background: white;
+						bottom: 0;
 						content: '';
-						position: absolute;
 						left: 0;
+						position: absolute;
 						right: 0;
 						top: 0;
-						bottom: 0;
 						z-index: -1
 					}
 
@@ -128,8 +130,8 @@ body {
 						background: #eee;
 					}
 
-					&:hover {
-						// color: white;
+					&.active {
+						border-bottom-color: $secondary-color;
 					}
 				}
 			}
