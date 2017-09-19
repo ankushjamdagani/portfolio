@@ -28,9 +28,8 @@
 				</div>
 				<div class="center-controls">
 					<div id="search-bar" class="bar long">
-						<input type="text" name="" placeholder="Enter something to search here..." value="">
+						<input type="text" placeholder="Enter something to search here...">
 					</div>
-					<!-- <div class="bar small"></div> -->
 				</div>
 				<div class="right-controls">
 					<div id="device-toggle" class="dropdown">
@@ -38,13 +37,13 @@
 							<i class="fa fa-bars"></i>
 						</div>
 						<ul class="dropdown-list">
-							<li class="active device mob">
+							<li class="active device mob" data-device="mob">
 								<i class="fa fa-mobile"></i>
 							</li>
-							<li class="device tab">
+							<li class="device tab" data-device="tab">
 								<i class="fa fa-tablet"></i>
 							</li>
-							<li class="device tel">
+							<li class="device wide" data-device="wide">
 								<i class="fa fa-television"></i>
 							</li>
 						</ul>
@@ -139,6 +138,11 @@
 							default:
 								break;
 						}
+					})
+
+					$('#device-toggle .device').on('click', function () {
+						$(this).siblings('.active').removeClass('active');
+						$(this).addClass('active');
 					})
 
 					$('.window-control.reposition')
