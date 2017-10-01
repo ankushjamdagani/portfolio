@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { LoadingPage } from './views';
+import { LoadingPage, CoverPage } from './views';
 
 class App extends React.Component {
 
 	render() {
 		return (
-			<LoadingPage />
+			<div className="app">
+				<CoverPage />
+				<LoadingPage />
+			</div>
 		)
 	}
 }

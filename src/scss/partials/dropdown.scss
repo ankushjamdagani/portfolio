@@ -1,0 +1,36 @@
+
+.dropdown {
+	position: relative;
+
+	.dropdown-link {
+		cursor: pointer;
+		padding: .3em;
+		position: relative;
+	}
+
+	.dropdown-list {
+		background: white;
+		color: #333;
+		display: none;
+		border: solid 1px #eee;
+		border-radius: 3px;
+		position: absolute;
+		z-index: 99;
+		top: calc(100% + .5em);
+
+		&:after {
+			content: '';
+			background: #fff;
+			padding: .5em;
+			transform: rotate(45deg);
+			position: absolute;
+			top: -.5em;
+			right: .5em;
+			z-index: -2;
+		}
+	}
+
+	&.active .dropdown-list {
+		display: block;
+	}
+}

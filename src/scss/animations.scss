@@ -1,0 +1,30 @@
+@keyframes border-anim {
+	0% {
+		border-width: 2em;
+		margin: 2em;
+	}
+	100% {
+		border-width: 4em;
+		margin: 0;
+	}
+}
+
+@keyframes rotate-anim {
+	0% {
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes scroll {
+	0% {
+		opacity: 1;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-2px);
+	}
+}
