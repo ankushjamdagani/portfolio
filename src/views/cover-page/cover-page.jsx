@@ -17,8 +17,13 @@ class CoverPage extends React.Component {
 
     render() {
         return <div className="cover-page">
-            <div id="ankush">
-                ANKUSH
+            <div id="portfolio-name">
+                <div>
+                    Ankush
+                </div>
+                <div>
+                    Jamdagani
+                </div>
             </div>
             <FractalTree
                 x={0}
