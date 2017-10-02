@@ -10,7 +10,8 @@ class CoverPage extends React.Component {
         console.log(window.innerHeight);
         this.state = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            begin: false
         }
     }
 
@@ -21,18 +22,25 @@ class CoverPage extends React.Component {
             </div>
             <FractalTree
                 x={0}
-                y={this.state.height}
-                length={100}
-                height={this.state.height}
-                width={this.state.width/2}
-                angle={-45}/>
+                y={this.state.height*.8}
+                canvasHeight={this.state.height}
+                canvasWidth={this.state.width}
+                sizeBranch={110}
+                angle={-45}
+                speed={100}
+                colorBranch='#666'
+                colorLeaf='#777'
+                begin={this.state.begin}/>
+
             <FractalTree
                 x={this.state.width/2}
-                y={this.state.height}
-                length={100}
-                height={this.state.height}
-                width={this.state.width/2}
-                angle={-135}/>
+                y={this.state.height*.8}
+                canvasHeight={this.state.height}
+                canvasWidth={this.state.width/2}
+                colorBranch='#999'
+                colorLeaf='crimson'
+                angle={-135}
+                begin={this.state.begin}/>
         </div>
     }
 }
