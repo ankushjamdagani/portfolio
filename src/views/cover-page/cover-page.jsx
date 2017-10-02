@@ -3,23 +3,36 @@ import React from 'react';
 import { FractalTree } from '../../components';
 
 class CoverPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
+    }
 
     render() {
         return <div className="cover-page">
+            <div id="ankush">
+                ANKUSH
+            </div>
             <FractalTree
-                x={250}
-                y={500}
+                x={0}
+                y={this.state.height}
                 length={100}
-                height="500"
-                width="1024"
-                angle={-90}/>
+                height={this.state.height}
+                width={this.state.width/2}
+                angle={-45}/>
             <FractalTree
-                x={512}
-                y={0}
+                x={this.state.width/2}
+                y={this.state.height}
                 length={100}
-                height="500"
-                width="1024"
-                angle={45}/>
+                height={this.state.height}
+                width={this.state.width/2}
+                angle={-135}/>
         </div>
     }
 }

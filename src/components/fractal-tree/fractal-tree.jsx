@@ -29,7 +29,7 @@ class FractalTree extends React.Component {
         console.log(x, y, length, angle);
 
         // ctx.strokeStyle = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.1)';
-        ctx.strokeStyle = '#eee';
+        ctx.strokeStyle = '#ddd';
         ctx.moveTo(x, y);
         ctx.lineTo(x1, y1);
         ctx.stroke();
@@ -41,8 +41,8 @@ class FractalTree extends React.Component {
         }
 
         setTimeout(() => {
-            this.drawBranch(x1, y1, length - 10, angle + Math.random()*30 + 15);
-            this.drawBranch(x1, y1, length - 10, angle - Math.random()*30 - 15);
+            this.drawBranch(x1, y1, length - 5, angle + Math.random()*30 + 15);
+            this.drawBranch(x1, y1, length - 5, angle - Math.random()*30 - 15);
         }, 200);
     }
 
@@ -50,7 +50,8 @@ class FractalTree extends React.Component {
         let ctx = this.canvas.getContext("2d");
 
         ctx.beginPath();
-        // ctx.fillStyle = 'rgba(255,125,200,1)';
+        ctx.fillStyle = 'red';
+        ctx.strokStyle = 'transparent';
         ctx.arc(x, y, 5, 0, 2*Math.PI);
         ctx.stroke();
     }
@@ -74,8 +75,8 @@ class FractalTree extends React.Component {
 FractalTree.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
-    height: PropTypes.string.isRequired,
-    width: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
     angle: PropTypes.number,
     rotation: PropTypes.number,
     length: PropTypes.number,
