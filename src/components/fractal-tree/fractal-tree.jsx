@@ -8,7 +8,7 @@ class FractalTree extends React.Component {
         this.state = props;
         this.ctr = 0;
 
-        this.draw = this.draw.bind(this);
+        this.drawBranch = this.drawBranch.bind(this);
         this.drawLeaf = this.drawLeaf.bind(this);
         this.toRadians = this.toRadians.bind(this);
     }
@@ -18,46 +18,54 @@ class FractalTree extends React.Component {
         return angle * (Math.PI / 180);
     }
 
-    draw(x, y, length, angle) {
+    drawBranch(x, y, length, angle) {
         let ctx = this.canvas.getContext("2d"),
             x1 = x + (length * Math.cos(this.toRadians(angle))),
-            y1 = y + (length * Math.sin(this.toRadians(angle)));
+            y1 = y + (length * Math.sin(this.toRadians(angle))),
+            r = Math.floor(Math.random()*125),
+            g = Math.floor(Math.random()*255),
+            b = Math.floor(Math.random()*125);
 
+        console.log(x, y, length, angle);
+
+        // ctx.strokeStyle = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.1)';
         ctx.strokeStyle = '#eee';
         ctx.moveTo(x, y);
         ctx.lineTo(x1, y1);
         ctx.stroke();
 
         this.ctr++;
-        if(length < 10) {
+        if(length < 40) {
             this.drawLeaf(x1, y1);
             return false;
         }
 
         setTimeout(() => {
-            this.draw(x1, y1, length - 10, angle + Math.random()*30 + 15);
-            this.draw(x1, y1, length - 10, angle - Math.random()*30 - 15);
-        }, 40);
+            this.drawBranch(x1, y1, length - 10, angle + Math.random()*30 + 15);
+            this.drawBranch(x1, y1, length - 10, angle - Math.random()*30 - 15);
+        }, 200);
     }
 
     drawLeaf(x, y) {
         let ctx = this.canvas.getContext("2d");
 
         ctx.beginPath();
-        ctx.fillSstyle = 'rgba(0,0,0,.3)';
+        // ctx.fillStyle = 'rgba(255,125,200,1)';
         ctx.arc(x, y, 5, 0, 2*Math.PI);
         ctx.stroke();
     }
 
     render() {
+        let {x, y, length, angle, width, height} = this.props;
+
         return <div className="fractal-tree">
             <canvas
                 ref={_this => this.canvas = _this} className="fractal-tree-canvas"
                 onClick={(e) => {
-                    this.draw(this.props.x, this.props.y, this.props.length, this.props.angle);
+                    this.drawBranch(x, y, length, angle);
                 }}
-                width={this.props.width}
-                height={this.props.height}>
+                width={width}
+                height={height}>
             </canvas>
         </div>
     }
