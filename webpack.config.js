@@ -5,7 +5,7 @@ var APP_DIR = path.resolve(__dirname + 'src/');
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 
 module.exports = {
-	entry: './src/index.jsx',
+	entry: './src/index.js',
 	output: {
 		path: BUILD_DIR,
 		publicPath: '/dist',

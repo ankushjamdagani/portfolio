@@ -1,0 +1,8 @@
+.grid-row {
+
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+}
