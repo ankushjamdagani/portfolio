@@ -13,4 +13,9 @@ import { Grid } from './components';
 
 const store = configureStore();
 
-ReactDOM.render(<Provider store={store}><Grid/></Provider>, document.getElementById('app-cover-page'));
+ReactDOM.render(
+	<Provider store={store}>
+		<Grid rowCount={2} colCount={3} />
+	</Provider>, 
+	document.getElementById('app-cover-page')
+);

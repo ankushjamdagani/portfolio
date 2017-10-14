@@ -9,7 +9,6 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="app">
-				<Grid />
 				<CoverPage />
 				<LoadingPage />
 			</div>

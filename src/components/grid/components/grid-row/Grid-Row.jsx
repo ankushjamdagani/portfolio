@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './styles.scss';
 import { GridCell } from '../../components';
 
-const GridRow = ({data, rowIndex}) => {
+const GridRow = ({data, rowIndex, dispatch}) => {
 
 	const move = (isUp) => {
 		const action = {
@@ -14,6 +14,10 @@ const GridRow = ({data, rowIndex}) => {
 				currentIndex: rowIndex
 			}
 		}
+
+		console.log(action);
+
+		dispatch(action);
 	}
 
 	return (
@@ -23,7 +27,7 @@ const GridRow = ({data, rowIndex}) => {
 	)
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
 	return dispatch;
 }
 

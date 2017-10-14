@@ -1,18 +1,15 @@
-const initGridReducer = (x, y) => {
-	// let arr = ;
-	// console.log(...new Array(x).keys())
+const grid = (state = {}, action) => {
+	switch(action.type) {
+		case 'GRID_INIT': 
+			const data = action.data;
 
-	return [...new Array(x).keys()].map(() => [...new Array(y).keys()]);
-}
-
-const initialState = {
-	data: initGridReducer(25,25)
-};
-
-const grid = (state = initialState, payload) => {
-	switch(payload.action) {
+			return {
+				...state,
+				data
+			};
+			break;
 		default:
-			return state
+			return state;
 	}
 }
 

@@ -16,8 +16,6 @@ const GridCell = ({data, isActive, isEditable, rowIndex, colIndex, dispatch}) =>
 			}
 		};
 
-		console.log(action);
-
 		dispatch(action);
 	}
 
