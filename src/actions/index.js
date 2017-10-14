@@ -1,18 +1,46 @@
 const generateGrid = (x,y) => {
-	let data = [];
+	let payload = [];
 
 	if(x && y)
-		data = [...new Array(x).keys()]
+		payload = [...new Array(x).keys()]
 		.map(() => 
 			[...new Array(y).keys()]
-			.map(() => ''));
+			.map(() => Math.random()*10));
 
 	return {
 		type: 'GRID_INIT',
-		data
+		payload
 	}
 }
 
+const rowMove = (isUp, currentIndex) => ({
+	type: 'ROW_MOVE',
+	payload: {
+		isUp,
+		currentIndex
+	}
+})
+
+const rowAdd = (isAbove, currentIndex) => ({
+	type: 'ROW_ADD',
+	payload: {
+		isAbove,
+		currentIndex
+	}
+})
+
+const saveChanges = (value, rowIndex, colIndex) => ({
+	type: 'CELL_UPDATE',
+	payload: {
+		rowIndex,
+		colIndex,
+		value
+	}
+})
+
 export {
-	generateGrid
+	generateGrid,
+	rowMove,
+	rowAdd,
+	saveChanges
 }

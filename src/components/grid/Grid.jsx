@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 import './styles.scss';
 
-import { GridRow } from './components';
+import { GridRow } from '../../components';
 import { generateGrid } from '../../actions';
 
 const Grid = ({data, colCount, rowCount, generateGrid}) => {
 	if(!data) {
 		generateGrid(rowCount, colCount);
 		
-		return <div className="loading-circle">
+		return <div>
 			Loading.....
 		</div>;
 	}
@@ -25,8 +25,8 @@ const Grid = ({data, colCount, rowCount, generateGrid}) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	console.log('state :: ', state.grid);
-	console.log('ownProps :: ', ownProps);
+	// console.log('state :: ', state.grid);
+	// console.log('ownProps :: ', ownProps);
 
 	return {
 		data: state.grid && state.grid.data ? state.grid.data : null,
