@@ -16,9 +16,9 @@ const generateGrid = (x,y) => {
 
 	if(x && y)
 		payload = [...new Array(x).keys()]
-		.map(() => 
+		.map((item, j) => 
 			[...new Array(y).keys()]
-			.map((item, i) => i));
+			.map((item, i) => j+''+i));
 
 	return {
 		type: 'GRID_INIT',
