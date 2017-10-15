@@ -69,6 +69,42 @@ const grid = (state = {}, action) => {
 			};
 		}
 
+		case 'COL_MOVE': {
+			const {isLeft, currentIndex} = action.payload;
+			let refIndex;
+			let data = state.data;
+
+			if(
+				(isLeft && currentIndex === 0) || 
+				(!isLeft && currentIndex === state.data[0].length - 1)
+			) {
+				return state;
+			}
+
+
+			if(isLeft) {
+				refIndex = currentIndex - 1;
+			}
+			else {
+				refIndex = currentIndex;
+			}
+
+			data = data.map((item) => {
+				return [
+					...item.slice(0, refIndex),
+					item[refIndex + 1],
+					item[refIndex],
+					...item.slice(refIndex + 2)
+				]
+			})
+
+			return {
+				...state,
+				data
+			}
+		
+		}
+
 		case 'COL_ADD': {
 			const {isLeft, currentIndex} = action.payload;
 			
