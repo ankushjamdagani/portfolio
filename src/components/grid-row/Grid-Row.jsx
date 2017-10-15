@@ -33,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		rowAdd: (isAbove) => dispatch(rowAdd(isAbove, ownProps.rowIndex)),
+		rowAdd: (isUp) => dispatch(rowAdd(isUp, ownProps.rowIndex)),
 		rowMove: (isUp) => dispatch(rowMove(isUp, ownProps.rowIndex))
 	}
 }

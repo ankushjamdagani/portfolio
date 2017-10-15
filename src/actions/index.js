@@ -21,13 +21,30 @@ const rowMove = (isUp, currentIndex) => ({
 	}
 })
 
-const rowAdd = (isAbove, currentIndex) => ({
+const rowAdd = (isUp, currentIndex) => ({
 	type: 'ROW_ADD',
 	payload: {
-		isAbove,
+		isUp,
 		currentIndex
 	}
 })
+
+const colAdd = (isLeft, currentIndex) => ({
+	type: 'COL_ADD',
+	payload: {
+		isLeft,
+		currentIndex
+	}
+})
+
+const colMove = (isLeft, currentIndex) => ({
+	type: 'COL_MOVE',
+	payload: {
+		isLeft,
+		currentIndex
+	}
+})
+
 
 const saveChanges = (value, rowIndex, colIndex) => ({
 	type: 'CELL_UPDATE',
@@ -40,7 +57,9 @@ const saveChanges = (value, rowIndex, colIndex) => ({
 
 export {
 	generateGrid,
-	rowMove,
 	rowAdd,
+	rowMove,
+	colAdd,
+	colMove,
 	saveChanges
 }

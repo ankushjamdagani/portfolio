@@ -40,7 +40,7 @@ const grid = (state = {}, action) => {
 		}
 		
 		case 'ROW_ADD': {
-			const {isAbove, currentIndex} = action.payload;
+			const {isUp, currentIndex} = action.payload;
 			
 			// TODO: Handle case when rowCount is 0 and colCount is N
 			// Hmmmm..... This action can only be dispatched by a row component, so minimum 1 row is must
@@ -50,7 +50,7 @@ const grid = (state = {}, action) => {
 			let data = state.data;
 			let newRowIndex = 0;
 
-			if(isAbove) {
+			if(isUp) {
 				newRowIndex = currentIndex;
 			}
 			else {
@@ -70,8 +70,35 @@ const grid = (state = {}, action) => {
 		}
 
 		case 'COL_ADD': {
-			console.log(action);
-			return state;
+			const {isLeft, currentIndex} = action.payload;
+			
+			// TODO: Handle case when colCount is 0 and rowCount is N
+			// Hmmmm..... This action can only be dispatched by a col component, so minimum 1 col is must
+			// If Add Col functionality is given to the Grid component, it can pass on the required rowCount
+			const rowCount = state.data.length;
+			
+			let data = state.data;
+			let newColIndex = 0;
+
+			if(isLeft) {
+				newColIndex = currentIndex;
+			}
+			else {
+				newColIndex = currentIndex + 1;
+			}
+
+			data = data.map((row) => {
+				return [
+					...row.slice(0, newColIndex),
+					'',
+					...row.slice(newColIndex)
+				]
+			})
+
+			return {
+				...state,
+				data
+			};
 		}
 
 		case 'CELL_UPDATE': {
