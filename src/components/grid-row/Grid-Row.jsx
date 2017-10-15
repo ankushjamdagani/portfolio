@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import './styles.scss';
 
 import { GridCell } from '../../components';
-import { rowMove, rowAdd } from '../../actions';
+import { rowMove, rowAdd, rowRemove } from '../../actions';
 
-const GridRow = ({data, rowIndex, rowMove, rowAdd}) => {
+const GridRow = ({data, rowIndex, rowAdd, rowMove, rowRemove}) => {
 	return (
 		<div className="grid-row">
 			<div className="grid-content">
@@ -19,6 +19,7 @@ const GridRow = ({data, rowIndex, rowMove, rowAdd}) => {
 				<button onClick={() => rowMove(false)}>Move Down</button>
 				<button onClick={() => rowAdd(true)}>Add Row Above</button>
 				<button onClick={() => rowAdd(false)}>Add Row Below</button>
+				<button onClick={() => rowRemove()}>X</button>
 			</div>
 		</div>
 	)
@@ -34,7 +35,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		rowAdd: (isUp) => dispatch(rowAdd(isUp, ownProps.rowIndex)),
-		rowMove: (isUp) => dispatch(rowMove(isUp, ownProps.rowIndex))
+		rowMove: (isUp) => dispatch(rowMove(isUp, ownProps.rowIndex)),
+		rowRemove: () => dispatch(rowRemove(ownProps.rowIndex))
 	}
 }
 

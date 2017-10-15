@@ -15,24 +15,41 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 		</div>;
 	}
 
+	let _formulaInput = null;
+
 	const saveToCSV = () => {
 		const csv = data.map(item => item.join(',')).join('\n');
 
 		// TODO: Save to memory Bitch!!!!
-		console.log(csv);
+		localStorage.setItem('csv', csv);
 	}
 
 	const loadFromCSV = () => {
 		// TODO: Come-on Bitch... not again!!!! Load from memory
-		const loadedCSV = '1,2,3\na,s,d';
+		const loadedCSV = localStorage.getItem('csv');
 
 		csvGeneratedGrid(loadedCSV);
 	}
 
+	const calculateFormula = () => {
+		console.log('aaaaaaaa');
+	}
+
 	return (
 		<div className="component-grid">
-			<button onClick={saveToCSV}>Save</button>
-			<button onClick={loadFromCSV}>Load</button>
+			<div className="grid-controls-wrapper">
+				<div className="controls">
+					<button onClick={saveToCSV}>Save</button>
+					<button onClick={loadFromCSV}>Load</button>
+				</div>
+				<div>
+					<input 
+						type="text" 
+						name="formula-input" 
+						ref={input => _formulaInput = input} />
+					<button onClick={calculateFormula}>Calculate</button>
+				</div>
+			</div>
 			{ 
 				data.map((dataItem, i) => <GridRow data={dataItem} key={i} rowIndex={i} />)
 			}

@@ -42,6 +42,20 @@ const rowAdd = (isUp, currentIndex) => ({
 	}
 })
 
+const rowRemove = (currentIndex) => ({
+	type: 'ROW_REMOVE',
+	payload: {
+		currentIndex
+	}
+})
+
+const colRemove = (currentIndex) => ({
+	type: 'COL_REMOVE',
+	payload: {
+		currentIndex
+	}
+})
+
 const colAdd = (isLeft, currentIndex) => ({
 	type: 'COL_ADD',
 	payload: {
@@ -73,7 +87,9 @@ export {
 	generateGrid,
 	rowAdd,
 	rowMove,
+	rowRemove,
 	colAdd,
 	colMove,
+	colRemove,
 	saveChanges
 }

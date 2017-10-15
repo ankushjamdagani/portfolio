@@ -69,6 +69,40 @@ const grid = (state = {}, action) => {
 			};
 		}
 
+		case 'ROW_REMOVE': {
+			const {currentIndex} = action.payload;
+
+			let data = state.data;
+
+			data = [
+				...data.slice(0, currentIndex),
+				...data.slice(currentIndex+1)
+			]
+
+			return {
+				...state,
+				data
+			}
+		}
+
+		case 'COL_REMOVE': {
+			const {currentIndex} = action.payload;
+
+			let data = state.data;
+
+			data = data.map(item => {
+				return [
+					...item.slice(0, currentIndex),
+					...item.slice(currentIndex+1)
+				]
+			})
+
+			return {
+				...state,
+				data
+			}
+		}
+
 		case 'COL_MOVE': {
 			const {isLeft, currentIndex} = action.payload;
 			let refIndex;
