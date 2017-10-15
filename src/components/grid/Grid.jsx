@@ -32,7 +32,16 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 	}
 
 	const calculateFormula = () => {
-		console.log('aaaaaaaa');
+		let inputValue = _formulaInput.value.trim();
+
+		if(!inputValue)
+			return false;
+
+		let formula = inputValue.split(/\+|\-|\*|\//)
+					.filter(operand => operand)
+					.map(operand => operand.trim());
+
+		console.log(formula);
 	}
 
 	return (
@@ -46,6 +55,7 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 					<input 
 						type="text" 
 						name="formula-input" 
+						placeholder="a4 = a1 + b2"
 						ref={input => _formulaInput = input} />
 					<button onClick={calculateFormula}>Calculate</button>
 				</div>

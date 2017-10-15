@@ -15,7 +15,14 @@ const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Grid rowCount={2} colCount={3} />
+		<App />
 	</Provider>, 
 	document.getElementById('app-cover-page')
+);
+
+ReactDOM.render(
+	<Provider store={store}>
+		<Grid rowCount={25} colCount={25} />
+	</Provider>, 
+	document.getElementById('window-body')
 );
