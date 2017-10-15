@@ -30,6 +30,7 @@ button {
 .component-grid {
 	background: #eee;
 	height: 100%;
+	position: relative;
 
 	@extend .clearfix;
 
@@ -40,6 +41,11 @@ button {
 		padding: .5em;
 		margin-bottom: 1em;
 		box-shadow: 0 5px 10px rgba(0,0,0,.1);
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 111;
 	}
 
 	.grid-controls-wrapper .controls {
@@ -68,5 +74,7 @@ button {
 
 	.grid-content-wrapper {
 		overflow: auto;
+		padding-top: 4em;
+		height: 100%;
 	}
 }

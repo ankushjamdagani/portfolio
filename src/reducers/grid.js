@@ -1,4 +1,5 @@
 const grid = (state = {}, action) => {
+	console.log(action);
 	switch(action.type) {
 		case 'GRID_INIT': 
 			const data = action.payload;

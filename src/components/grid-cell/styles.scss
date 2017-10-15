@@ -9,12 +9,47 @@
 	    position: absolute;
 	    background: white;
 	    z-index: 111;
-	    padding: .5em 1em;
 	    box-shadow: 0 5px 10px rgba(0,0,0,.1);
 	    top: calc(100% + .5em);
+		max-width: 200px;
+		white-space: normal;
+
+		button {
+			background: white;
+			border-radius: 0;
+			border: none;
+			// border-bottom: solid 1px #eee;
+			display: block;
+			margin: 0;
+			text-align: left;
+			width: 100%;
+
+			
+
+			&:hover {
+				background: #f1f1f1;
+			}
+		}
+
+		.controls-head {
+			font-size: 12px;
+			color: #999;
+			padding: .5em 1em;
+			margin: .5em 0;
+		}
+
+		.seperator {
+			height: 2px;
+			background: #eee;
+			margin: 1em 0;
+		}
+
+	    &.active {
+	    	display: block;
+	    }
 	}
 
-	input:focus + .grid-cell-controls {
-		display: block;
-	}
+	// input:focus + .grid-cell-controls {
+	// 	display: block;
+	// }
 }
