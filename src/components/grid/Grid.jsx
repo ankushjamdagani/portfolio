@@ -77,11 +77,7 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, compute
 	return (
 		<div className="component-grid">
 			<div className="grid-controls-wrapper">
-				<div className="controls">
-					<button onClick={saveToCSV}>Save</button>
-					<button onClick={loadFromCSV}>Load</button>
-				</div>
-				<div>
+				<div className="formula-input-wrapper">
 					<input 
 						type="text" 
 						name="formula-input" 
@@ -89,10 +85,16 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, compute
 						ref={input => _formulaInput = input} />
 					<button onClick={calculateFormula}>Calculate</button>
 				</div>
+				<div className="controls">
+					<button onClick={saveToCSV}>Save</button>
+					<button onClick={loadFromCSV}>Load</button>
+				</div>
 			</div>
-			{ 
-				data.map((dataItem, i) => <GridRow data={dataItem} key={i} rowIndex={i} />)
-			}
+			<div className="grid-content-wrapper">
+				{ 
+					data.map((dataItem, i) => <GridRow data={dataItem} key={i} rowIndex={i} />)
+				}
+			</div>
 		</div>
 	)
 }

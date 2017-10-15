@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './styles.scss';
 import { saveChanges } from '../../actions';
 
-const GridCell = ({data, isActive, isEditable, rowIndex, colIndex, saveChanges}) => {
+const GridCell = ({data, rowIndex, colIndex, saveChanges}) => {
 	let _input = null;
 
 	const onBlur = (e) => {
@@ -29,6 +29,10 @@ const GridCell = ({data, isActive, isEditable, rowIndex, colIndex, saveChanges})
 				value={data} 
 				ref={input => _input = input}
 				onChange={e => handleInput(e)} />
+
+			<div className="grid-cell-controls">
+				Something.........
+			</div>
 		</div>
 	)
 }

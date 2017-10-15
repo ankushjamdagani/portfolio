@@ -2,4 +2,19 @@
 	display: inline-block;
 	min-width: 100px;
 	padding: .25em;
+	position: relative;
+
+	.grid-cell-controls {
+		display: none;
+	    position: absolute;
+	    background: white;
+	    z-index: 111;
+	    padding: .5em 1em;
+	    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+	    top: calc(100% + .5em);
+	}
+
+	input:focus + .grid-cell-controls {
+		display: block;
+	}
 }
