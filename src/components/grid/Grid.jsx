@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+var math = require('mathjs');
 
 import './styles.scss';
 
 import { GridRow } from '../../components';
-import { csvGeneratedGrid, generateGrid } from '../../actions';
+import { csvGeneratedGrid, generateGrid, saveChanges } from '../../actions';
 
-const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
+const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, computeCell}) => {
 	if(!data) {
 		generateGrid(rowCount, colCount);
 		
@@ -31,17 +32,46 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 		csvGeneratedGrid(loadedCSV);
 	}
 
+	const getValueFromExpression = (op) => {
+		let coords = op.match(/[^\d]+|\d+/g);
+
+		coords[0] = coords[0].charCodeAt(0) - 97
+
+		return {
+			row: coords[0],
+			col: parseInt(coords[1])
+		}
+	}
+
 	const calculateFormula = () => {
 		let inputValue = _formulaInput.value.trim();
 
 		if(!inputValue)
 			return false;
 
-		let formula = inputValue.split(/\+|\-|\*|\//)
+		let operands = inputValue.split(/\+|\-|\*|\/|\=/)
 					.filter(operand => operand)
 					.map(operand => operand.trim());
 
-		console.log(formula);
+		let scope = {};
+		let coords = {};
+		let resultCell = {};
+
+		for (var i = 0; i <= operands.length; i++) {
+			if(operands[i]) {
+				coords = getValueFromExpression(operands[i])
+				
+				scope[operands[i]] = parseInt(data[coords.row][coords.col]);
+
+				if(i === 0) {
+					resultCell = {row: coords.row, col: coords.col};
+				}
+			}
+		}
+
+		let result = math.eval(inputValue, scope);
+
+		computeCell(result, resultCell.row, resultCell.col);
 	}
 
 	return (
@@ -68,9 +98,6 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	// console.log('state :: ', state.grid);
-	// console.log('ownProps :: ', ownProps);
-
 	return {
 		data: state.grid && state.grid.data ? state.grid.data : null,
 		...ownProps
@@ -80,7 +107,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
 	return {
 		generateGrid: (x, y) => dispatch(generateGrid(x,y)),
-		csvGeneratedGrid: (csv) => dispatch(csvGeneratedGrid(csv))
+		csvGeneratedGrid: (csv) => dispatch(csvGeneratedGrid(csv)),
+		computeCell: (value, rowIndex, colIndex) => dispatch(saveChanges(value, rowIndex, colIndex))
 	}
 }
 
