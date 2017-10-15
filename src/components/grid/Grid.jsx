@@ -32,6 +32,7 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, compute
 		csvGeneratedGrid(loadedCSV);
 	}
 
+	// TODO: WHAT IF ROW IS GREATER THAN `Z`
 	const getValueFromExpression = (op) => {
 		let coords = op.match(/[^\d]+|\d+/g);
 

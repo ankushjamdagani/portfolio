@@ -1,8 +1,27 @@
-.grid-cell {
+.col-head, .row-head {
 	display: inline-block;
-	min-width: 100px;
+	min-width: 104px;
 	padding: .25em;
 	position: relative;
+	text-align: center;
+	// background: #ccc;
+	text-transform: uppercase;
+	height: 26px;
+}
+
+.col-head:first-child {
+	opacity: 0;
+}
+
+.grid-cell {
+	display: inline-block;
+	width: 104px;
+	padding: .25em;
+	position: relative;
+
+	input {
+		width: 100px;
+	}
 
 	.grid-cell-controls {
 		display: none;

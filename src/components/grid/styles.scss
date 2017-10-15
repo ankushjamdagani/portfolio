@@ -27,6 +27,11 @@ button {
 	}
 }
 
+.grid-head {
+	
+	@extend .clearfix;
+}
+
 .component-grid {
 	background: #eee;
 	height: 100%;

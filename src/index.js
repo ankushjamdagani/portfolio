@@ -22,7 +22,7 @@ ReactDOM.render(
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Grid rowCount={25} colCount={25} />
+		<Grid rowCount={2} colCount={5} />
 	</Provider>, 
 	document.getElementById('window-body')
 );
