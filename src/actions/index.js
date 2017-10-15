@@ -1,3 +1,16 @@
+const csvGeneratedGrid = (csv) => {
+	let payload = [];
+
+	if(csv.trim()) {
+		payload = csv.split('\n').map(item => item.split(','));
+	}
+
+	return {
+		type: 'GRID_INIT',
+		payload
+	}
+}
+
 const generateGrid = (x,y) => {
 	let payload = [];
 
@@ -56,6 +69,7 @@ const saveChanges = (value, rowIndex, colIndex) => ({
 })
 
 export {
+	csvGeneratedGrid,
 	generateGrid,
 	rowAdd,
 	rowMove,

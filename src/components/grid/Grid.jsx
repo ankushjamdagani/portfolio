@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import './styles.scss';
 
 import { GridRow } from '../../components';
-import { generateGrid } from '../../actions';
+import { csvGeneratedGrid, generateGrid } from '../../actions';
 
-const Grid = ({data, colCount, rowCount, generateGrid}) => {
+const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid}) => {
 	if(!data) {
 		generateGrid(rowCount, colCount);
 		
@@ -15,8 +15,24 @@ const Grid = ({data, colCount, rowCount, generateGrid}) => {
 		</div>;
 	}
 
+	const saveToCSV = () => {
+		const csv = data.map(item => item.join(',')).join('\n');
+
+		// TODO: Save to memory Bitch!!!!
+		console.log(csv);
+	}
+
+	const loadFromCSV = () => {
+		// TODO: Come-on Bitch... not again!!!! Load from memory
+		const loadedCSV = '1,2,3\na,s,d';
+
+		csvGeneratedGrid(loadedCSV);
+	}
+
 	return (
 		<div className="component-grid">
+			<button onClick={saveToCSV}>Save</button>
+			<button onClick={loadFromCSV}>Load</button>
 			{ 
 				data.map((dataItem, i) => <GridRow data={dataItem} key={i} rowIndex={i} />)
 			}
@@ -36,7 +52,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		generateGrid: (x, y) => dispatch(generateGrid(x,y))
+		generateGrid: (x, y) => dispatch(generateGrid(x,y)),
+		csvGeneratedGrid: (csv) => dispatch(csvGeneratedGrid(csv))
 	}
 }
 
