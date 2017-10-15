@@ -43,22 +43,36 @@ const grid = (state = {}, action) => {
 		
 		case 'ROW_ADD': {
 			const isUp = false;
-			console.log(action.payload);
+			console.log(action);
+			return state;
+		}
+
+		case 'COL_ADD': {
+			console.log(action);
 			return state;
 		}
 
 		case 'CELL_UPDATE': {
 			const {rowIndex, colIndex, value} = action.payload;
 
-			state.data[rowIndex][colIndex] = value;
+			const data = state.data.map((item, i) => {
 
-			console.log(value)
+				if(i === rowIndex) {
+					return [
+						...item.slice(0, colIndex),
+						value,
+						...item.slice(colIndex + 1)
+					]
+				}
+				else {
+					return item
+				}
+			})
+
 
 			return {
 				...state,
-				data: [
-					...state.data
-				]
+				data
 			}
 		}
 
