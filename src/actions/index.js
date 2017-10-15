@@ -5,7 +5,7 @@ const generateGrid = (x,y) => {
 		payload = [...new Array(x).keys()]
 		.map(() => 
 			[...new Array(y).keys()]
-			.map(() => Math.random()*10));
+			.map(() => ''));
 
 	return {
 		type: 'GRID_INIT',
