@@ -3,7 +3,9 @@
 <head>
 	<title>Ankush Jamdagani | Portfolio</title>
 	<link rel="stylesheet" href="src/third-party/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="src/components/doc-viewer/styles.css">
 	<script src="src/third-party/jquery-1.12.4.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 	<style media="screen">
@@ -13,218 +15,430 @@
 
 		.description {
 			font-style: italic;
-			/*font-size: 12px;*/
 			line-height: 1.5em;
 		}
-	</style>
-	<div id="disclaimer" style="padding: 1em; background: #7b04d7; color: white; letter-spacing: 1px;">
-		Oops!! You got me. Glad to have you here. But...
-		<span class="description">Basic design with actual data will be available on <time datetime="2017-02-19 13:00">19th October 2017 at 1:00 PM (IST)</time></span> with upcoming major updates on interval of 48 hours.
 
-		<h1 style="font-size: 2em; padding: 0.75em 0; text-align: center;">This Portfolio is under active development!!</h1>
+		#disclaimer {
+			background: #7b04d7;
+			border-radius: 4px;
+			color: white;
+			left: 2em;
+			letter-spacing: 1px;
+			opacity: .6;
+			padding: 1em;
+			position: absolute;
+			right: 2em;
+			top: 2em;
+			z-index: 1;
+		}
+
+		.close {
+			background: rgba(0,0,0,.2);
+			border-radius: 4px;
+			cursor: pointer;
+			float: right;
+			padding: 0.5em;
+		}
+
+		.close:hover {
+			background: rgba(0,0,0,.4)
+		}
+
+		.component-name {
+		    font-size: 1.5em;
+		    text-align: center;
+		    padding: .5em;
+		    font-style: italic;
+		    color: #333;
+		    font-variant: petite-caps;
+		    text-transform: capitalize;
+		}
+
+		#page-load-wrapper {
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: #eee;
+			z-index: 111;
+		}
+	</style>
+	<div id="disclaimer">
+		<span class="close" data-target="disclaimer"><i class="fa fa-close"></i></span>
+		Glad to have you here. But...
+		<span class="description">Basic design with actual data will be available by <time datetime="2017-02-19 13:00">19th October 2017 at 3:00 PM (IST)</time></span> with upcoming major updates on interval of 48 hours.
+
+		<h1 style="font-size: 2em; padding: 0.75em 0; text-align: center;">Oops... You got me!!! This Portfolio is under active development!!</h1>
 	</div>
 	<div id="app-cover-page"></div>
 	<div id="body-wrapper">
-		<div id="window" class="normal">
-			<div id="window-head">
-				<div class="window-controls">
-					<div class="window-control reposition" draggable="true" data-action="REPOSITION">
-						<i class="fa fa-arrows"></i>
-					</div>
-					<div class="window-control minimize" data-action="MINIMIZE">
-						<i class="fa fa-window-minimize"></i>
-					</div>
-					<div class="window-control restore" data-action="RESTORE">
-						<i class="fa fa-window-restore"></i>
-					</div>
-					<div class="window-control maximize" data-action="MAXIMIZE">
-						<i class="fa fa-window-maximize"></i>
-					</div>
-				</div>
-				<div class="center-controls">
-					<div id="search-bar" class="bar long">
-						<input type="text" placeholder="Enter something to search here...">
-					</div>
-				</div>
-				<div class="right-controls">
-					<div id="device-toggle" class="dropdown">
-						<div class="dropdown-link">
-							<i class="fa fa-bars"></i>
+	</div>
+
+	<div class="component-wrapper">
+		<a href="#" class="component-link">Component : <em>Window</em></a>
+		<div class="label-wrapper">
+			<span class="label">Javascript</span>
+		</div>
+
+		<div class="component-demo-info">Click on window controls. And drag and reposition window</div>
+		<div id="window-wrapper" class="component-demo">
+			<div id="window" class="normal">
+				<div id="window-head">
+					<div class="window-controls">
+						<div class="window-control reposition" draggable="true" data-action="REPOSITION">
+							<i class="fa fa-arrows"></i>
 						</div>
-						<ul class="dropdown-list">
-							<li class="active device mob" data-device="mob">
-								<i class="fa fa-mobile"></i>
-							</li>
-							<li class="device tab" data-device="tab">
-								<i class="fa fa-tablet"></i>
-							</li>
-							<li class="device wide" data-device="wide">
-								<i class="fa fa-television"></i>
-							</li>
-						</ul>
+						<div class="window-control minimize" data-action="MINIMIZE">
+							<i class="fa fa-window-minimize"></i>
+						</div>
+						<div class="window-control restore" data-action="RESTORE">
+							<i class="fa fa-window-restore"></i>
+						</div>
+						<div class="window-control maximize" data-action="MAXIMIZE">
+							<i class="fa fa-window-maximize"></i>
+						</div>
+					</div>
+					<div class="center-controls">
+						<div id="search-bar" class="bar long">
+							<input type="text" placeholder="Will act as a search box.... hopefully :-p">
+						</div>
+					</div>
+					<div class="right-controls">
+						<div id="device-toggle" class="dropdown">
+							<div class="dropdown-link">
+								<i class="fa fa-bars"></i>
+							</div>
+							<ul class="dropdown-list">
+								<li class="active device mob" data-device="mob">
+									<i class="fa fa-mobile"></i>
+								</li>
+								<li class="device tab" data-device="tab">
+									<i class="fa fa-tablet"></i>
+								</li>
+								<li class="device wide" data-device="wide">
+									<i class="fa fa-television"></i>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="window-body">
+				<div id="window-body">
 
-			</div>
-			<div id="window-foot">
+				</div>
+				<div id="window-foot">
 
+				</div>
 			</div>
+			<script type="text/javascript">
+				$(document).ready(function () {
+					// Component - Window
+					let factoryWindow = (function () {
+						let _x = 0,
+							_y = 0,
+							_width = 600,
+							_height = 480;
+
+						let _calculateInitialSize = function () {
+							__frameWidth = $('body')[0].clientWidth;
+							__frameHeight = $('body')[0].clientHeight;
+
+							_width = __frameWidth * .6;
+							_height = __frameHeight * .8;
+							_y = __frameHeight * .1;
+							_x = __frameWidth * .2;
+
+							$('#window').css('width', _width + 'px');
+							$('#window').css('height', _height + 'px');
+							$('#window').css('left', _x + 'px');
+							$('#window').css('top', _y + 'px');
+						}
+
+						let setSize = function (x = _x, y = _y, w = _width, h = _height) {
+							_x = x;
+							_y = y;
+							_width = w;
+							_height = h;
+						}
+
+						let getSize = function () {
+
+							return {
+								left: _x,
+								top: _y,
+								width: _width,
+								height: _height
+							}
+						}
+
+
+						let _bindEvents = function () {
+							$('.window-control').on('click', function (e) {
+								e.preventDefault();
+								e.stopPropagation();
+
+								$('#window').removeClass();
+
+								let _ACTION = $(this).data('action');
+								switch (_ACTION) {
+									case 'MINIMIZE':
+										$('#window').addClass('minimized');
+										$('#window').attr('style', '');
+										break;
+									case 'MAXIMIZE':
+										$('#window').addClass('maximized');
+										$('#window').attr('style', '');
+										break;
+									case 'RESTORE':
+										$('#window').addClass('normal');
+										let size = getSize();
+
+										for (var key in size) {
+											if (size.hasOwnProperty(key)) {
+												$('#window').css(key, size[key] + 'px')
+											}
+										}
+										break;
+									case 'REPOSITION':
+										$('#window').addClass('normal');
+										break;
+									default:
+										break;
+								}
+							})
+
+							$('#device-toggle .device').on('click', function () {
+								$(this).siblings('.active').removeClass('active');
+								$(this).addClass('active');
+							})
+
+							$('.window-control.reposition')
+							.on('dragstart', function () {
+								$('#window').addClass('dragging')
+							})
+							.on('dragend', function () {
+								$('#window').removeClass('dragging')
+							})
+							.on('drag', function (e) {
+								if(e.clientX === 0 || $('#window').hasClass('minimized'))
+									return false;
+
+								if($('#window').hasClass('maximized')) {
+									$('#window').css('left', (0) + 'px')
+									$('#window').css('top', (0) + 'px')
+
+									$('#window').removeClass('maximized')
+									$('#window').addClass('normal')
+									setSize(0, 0);
+								}
+								else {
+									// TODO: DRAG IS NOT WORKING PROPERLY
+									$('#window.normal').css('left', (e.clientX - 20) + 'px')
+									$('#window.normal').css('top', (e.clientY - 20) + 'px')
+
+									setSize(e.clientX - 20, e.clientY - 20);
+								}
+							})
+
+							$('.window-control.resize')
+							.on('dragstart', function () {
+								$('#window').addClass('resizing')
+							})
+							.on('dragend', function () {
+								$('#window').removeClass('resizing')
+							})
+							.on('drag', function (e) {
+								if(e.clientX === 0 || $('#window').hasClass('minimized'))
+									return false;
+
+								if($('#window').hasClass('maximized')) {
+									$('#window').css('left', (0) + 'px')
+									$('#window').css('top', (0) + 'px')
+
+									$('#window').removeClass('maximized')
+									$('#window').addClass('normal')
+									setSize(0, 0);
+								}
+								else {
+									// $('#window.normal').css('width', (e.clientX - 20) + 'px')
+									// $('#window.normal').css('height', (e.clientY - 20) + 'px')
+
+									// setSize(e.clientX - 20, e.clientY - 20);
+								}
+							})
+						}
+
+
+						_calculateInitialSize();
+						_bindEvents();
+					})();
+				})
+			</script>
 		</div>
 	</div>
+
+
+	<div class="component-wrapper">
+		<a href="#" class="component-link">Component : <em>Drag &amp; Drop</em></a>
+		<div class="label-wrapper">
+			<span class="label">Javascript</span>
+		</div>
+		<div class="component-demo-info">Click on whitespace between the row label and row links. (Right Click for controls)</div>
+		<div id="drag-drop-wrapper" class="component-demo"></div>
+		<script>
+		    let _data = [
+		        {
+		            "category": true,
+		            "id":5,
+		            "data": {
+		                "title": "category 5"
+		            },
+		            "parentId":0
+		        },
+		        {
+		            "category": true,
+		            "id": 1,
+		            "data": {
+		                "title": "category 1"
+		            },
+		            "parentId": 0
+		        },
+		        {
+		            "category": true,
+		            "id": 2,
+		            "data": {
+		                "title": "category 2"
+		            },
+		            "parentId": 0
+		        },
+		        {
+		            "category" :true,
+		            "id":3,
+		            "data": {
+		                "title": "category 3"
+		            },
+		            "parentId": 0
+		        },
+		        {
+		            "category": true,
+		            "id": 0,
+		            "data": {
+		                "title": "category 0"
+		            }
+		        },
+		        {
+		            "category": true,
+		            "id": 4,
+		            "data": {
+		                "title": "category 4"
+		            }, "parentId": 0
+		        },
+		        {
+		            "category": false,
+		            "id": 6,
+		            "data": {
+		                "title": "product 0",
+		                "price": 200
+		            },
+		            "parentId": 5
+		        },
+		        {
+		            "category": false,
+		            "id": 7,
+		            "data": {
+		                "title": "product 1",
+		                "price": 200
+		            },
+		            "parentId": 5
+		        }
+		    ];
+
+		    const initialState = JSON.parse(JSON.stringify(_data));
+		
+		    $('document').ready(() => {
+		        let actions = {
+		            "delete": {
+		                "icon": `<i class='fa fa-trash-o'></i>`,
+		                "actions": {
+		                    before: function(row) {
+		                    	confirm('Delete ?');
+		                    },
+		                    after: function(row) {
+		                    	alert('Delete After!');
+		                    }
+		               },
+		               "filter": function(row) {
+		                   return true;
+		               }
+		            },
+		            "edit": {
+		                "icon": `<i class='fa fa-pencil'></i>`,
+		                "actions": {
+		                    before: function(row) {
+		                    	confirm('Edit ?');
+		                    },
+		                    after: function(row) {
+		                    	alert('Edit After!');
+		                    }
+		               },
+		               "filter": function(row) {
+		                   return true;
+		               }
+		            },
+		            "add": {
+		                "icon": `<i class='fa fa-plus'></i>`,
+		                "actions": {
+		                    before: function(row) {
+		                        confirm('Add?');
+		                    },
+		                    after: function(row) {
+		                        alert('Add after!');
+		                    }
+		               },
+		               "filter": function(row) {
+		                    if($(row).hasClass('product-wrapper'))
+		                        return false;
+
+		                    return true;
+		               }
+		            }
+		         };
+
+		        let doc = $('#drag-drop-wrapper').documentViewer({
+			            actions: actions,
+			            subMenu: actions,
+			            flatData: initialState,
+			            alert: (arg) => {prompt('Alert is overriden to prompt - ' + arg);},
+			            sortable: true,
+			            selectable: true
+			        });
+			    })
+		</script>
+
+	</div>		
+
+	<div id="page-load-wrapper"><div></div></div>
 	<script type="text/javascript">
 
 		$(document).ready(function () {
+			setTimeout(() => {
+				$('#page-load-wrapper').toggle();
+			}, 1000)
+
+			$(document).on('click', '.close', function () {
+				let _target = $(this).data('target');
+
+				$('#'+_target).toggle();
+			})
 
 			$(document).on('click', '.dropdown-link', function () {
 				$(this).closest('.dropdown').toggleClass('active')
 			})
-
-			let factoryWindow = function () {
-				let _x = 0,
-					_y = 0,
-					_width = 600,
-					_height = 480;
-
-				let _calculateInitialSize = function () {
-					__frameWidth = $('body')[0].clientWidth;
-					__frameHeight = $('body')[0].clientHeight;
-
-					_width = __frameWidth * .6;
-					_height = __frameHeight * .8;
-					_y = __frameHeight * .1;
-					_x = __frameWidth * .2;
-
-					$('#window').css('width', _width + 'px');
-					$('#window').css('height', _height + 'px');
-					$('#window').css('left', _x + 'px');
-					$('#window').css('top', _y + 'px');
-				}
-
-				let setSize = function (x = _x, y = _y, w = _width, h = _height) {
-					_x = x;
-					_y = y;
-					_width = w;
-					_height = h;
-				}
-
-				let getSize = function () {
-
-					return {
-						left: _x,
-						top: _y,
-						width: _width,
-						height: _height
-					}
-				}
-
-
-				let _bindEvents = function () {
-					$('.window-control').on('click', function (e) {
-						e.preventDefault();
-						e.stopPropagation();
-
-						$('#window').removeClass();
-
-						let _ACTION = $(this).data('action');
-						switch (_ACTION) {
-							case 'MINIMIZE':
-								$('#window').addClass('minimized');
-								$('#window').attr('style', '');
-								break;
-							case 'MAXIMIZE':
-								$('#window').addClass('maximized');
-								$('#window').attr('style', '');
-								break;
-							case 'RESTORE':
-								$('#window').addClass('normal');
-								let size = getSize();
-
-								for (var key in size) {
-									if (size.hasOwnProperty(key)) {
-										$('#window').css(key, size[key] + 'px')
-									}
-								}
-								break;
-							case 'REPOSITION':
-								$('#window').addClass('normal');
-								break;
-							default:
-								break;
-						}
-					})
-
-					$('#device-toggle .device').on('click', function () {
-						$(this).siblings('.active').removeClass('active');
-						$(this).addClass('active');
-					})
-
-					$('.window-control.reposition')
-					.on('dragstart', function () {
-						$('#window').addClass('dragging')
-					})
-					.on('dragend', function () {
-						$('#window').removeClass('dragging')
-					})
-					.on('drag', function (e) {
-						if(e.clientX === 0 || $('#window').hasClass('minimized'))
-							return false;
-
-						if($('#window').hasClass('maximized')) {
-							$('#window').css('left', (0) + 'px')
-							$('#window').css('top', (0) + 'px')
-
-							$('#window').removeClass('maximized')
-							$('#window').addClass('normal')
-							setSize(0, 0);
-						}
-						else {
-							$('#window.normal').css('left', (e.clientX - 20) + 'px')
-							$('#window.normal').css('top', (e.clientY - 20) + 'px')
-
-							setSize(e.clientX - 20, e.clientY - 20);
-						}
-					})
-
-					$('.window-control.resize')
-					.on('dragstart', function () {
-						$('#window').addClass('resizing')
-					})
-					.on('dragend', function () {
-						$('#window').removeClass('resizing')
-					})
-					.on('drag', function (e) {
-						if(e.clientX === 0 || $('#window').hasClass('minimized'))
-							return false;
-
-						if($('#window').hasClass('maximized')) {
-							$('#window').css('left', (0) + 'px')
-							$('#window').css('top', (0) + 'px')
-
-							$('#window').removeClass('maximized')
-							$('#window').addClass('normal')
-							setSize(0, 0);
-						}
-						else {
-							// $('#window.normal').css('width', (e.clientX - 20) + 'px')
-							// $('#window.normal').css('height', (e.clientY - 20) + 'px')
-
-							// setSize(e.clientX - 20, e.clientY - 20);
-						}
-					})
-				}
-
-
-				_calculateInitialSize();
-				_bindEvents();
-			};
-
-			factoryWindow();
 		})
 
 
 	</script>
 	<script type="text/javascript" src="./dist/bundle.js"></script>
+	<script type="text/javascript" src="./src/components/doc-viewer/documentViewer.min.js"></script>
 </body>
 </html>

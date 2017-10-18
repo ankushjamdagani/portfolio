@@ -1,34 +1,27 @@
 #app-cover-page {
     position: relative;
-    height: 100%;
+    // height: 100%;
 }
 
 .cover-page {
-    height: 100%;
     overflow: hidden;
-}
-
-.fractal-tree {
-    width: 50%;
-    float: left;
-    background: rgba(0,0,0,.8)
 }
 
 #portfolio-name {
     position: absolute;
-    left: 50%;
+    left: 0%;
     top: 50%;
     font-size: 6em;
-    font-family: sans-serif;
-    transform: translate(-50%, -50%);
-    color: #fafafa;
-    text-align: center;
+    transform: translateY(-50%);
+    color: #444;
 
     div {
+        text-shadow: 0 0 20px rgba(0,0,0,.2);
         transition: all .5s linear;
     }
+
     div:first-child {
-        transform: translate(-.5em, 1em);
+        transform: translate(.5em, 1.25em);
     }
 
     div:last-child {
@@ -41,7 +34,7 @@
         }
 
         div:last-child {
-            transform: translate(0em, -.5em);
+            transform: translate(0em, -.25em);
         }
 
     }

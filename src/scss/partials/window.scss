@@ -128,6 +128,8 @@
 		color: #333;
 		height: calc((100% - 45px - .2em));
 		overflow: auto;
+		position: relative;
+		z-index: 1;
 	}
 
 	#window-foot {

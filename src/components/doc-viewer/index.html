@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Portfolio | Ankush Jamdagani</title>
+    
+    <link rel="stylesheet" href="src/third-party/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="src/third-party/jquery-1.12.4.min.js"></script>
+    
+    <script src="documentViewer.es6.js" charset="utf-8"></script>
+	<link href='styles.css' type='text/css' rel='stylesheet' />
+  </head>
+  <body>
+    <div class="wrapper">
+      <section id="file-upload">
+        <h1>Drag files here to upload</h1>
+        <div class="files">
+
+        </div>
+      </section>
+
+      <section id="products-hierarchy">
+      </section>
+    </div>
+<script>
+let _data = [
+    {
+        "category": true,
+        "id":5,
+        "data": {
+            "title": "category 5"
+        },
+        "parentId":0
+    },
+    {
+        "category": true,
+        "id": 1,
+        "data": {
+            "title": "category 1"
+        },
+        "parentId": 0
+    },
+    {
+        "category": true,
+        "id": 2,
+        "data": {
+            "title": "category 2"
+        },
+        "parentId": 0
+    },
+    {
+        "category" :true,
+        "id":3,
+        "data": {
+            "title": "category 3"
+        },
+        "parentId": 0
+    },
+    {
+        "category": true,
+        "id": 0,
+        "data": {
+            "title": "category 0"
+        }
+    },
+    {
+        "category": true,
+        "id": 4,
+        "data": {
+            "title": "category 4"
+        }, "parentId": 0
+    },
+    {
+        "category": false,
+        "id": 6,
+        "data": {
+            "title": "product 0",
+            "price": 200
+        },
+        "parentId": 5
+    },
+    {
+        "category": false,
+        "id": 7,
+        "data": {
+            "title": "product 1",
+            "price": 200
+        },
+        "parentId": 5
+    }
+];
+
+const initialState = JSON.parse(JSON.stringify(_data));
+$('document').ready(() => {
+    let actions = {
+        "delete": {
+            "icon": `<i class='fa fa-trash-o'></i>`,
+            "actions": {
+                before: function(row) {
+                	confirm('Delete ?');
+                },
+                after: function(row) {
+                	alert('Delete After!');
+                }
+           },
+           "filter": function(row) {
+               return true;
+           }
+        },
+        "edit": {
+            "icon": `<i class='fa fa-pencil'></i>`,
+            "actions": {
+                before: function(row) {
+                	confirm('Edit ?');
+                },
+                after: function(row) {
+                	alert('Edit After!');
+                }
+           },
+           "filter": function(row) {
+               return true;
+           }
+        },
+        "add": {
+            "icon": `<i class='fa fa-plus'></i>`,
+            "actions": {
+                before: function(row) {
+                    confirm('Add?');
+                },
+                after: function(row) {
+                    alert('Add after!');
+                }
+           },
+           "filter": function(row) {
+                if($(row).hasClass('product-wrapper'))
+                    return false;
+
+                return true;
+           }
+        }
+     };
+
+    let doc = $('#products-hierarchy').documentViewer({
+        actions: actions,
+        subMenu: actions,
+        flatData: initialState,
+        alert: (arg) => {console.log(arg);},
+        sortable: true,
+        selectable: true
+    });
+})
+</script>
+  </body>
+</html>

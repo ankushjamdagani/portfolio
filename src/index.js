@@ -9,7 +9,7 @@ import './scss/main.scss';
 
 import App from './app';
 
-import { Grid } from './components';
+// import { Grid } from './components';
 
 const store = configureStore();
 
@@ -20,9 +20,9 @@ ReactDOM.render(
 	document.getElementById('app-cover-page')
 );
 
-ReactDOM.render(
-	<Provider store={store}>
-		<Grid rowCount={20} colCount={15} />
-	</Provider>, 
-	document.getElementById('window-body')
-);
+// ReactDOM.render(
+// 	<Provider store={store}>
+// 		<Grid rowCount={10} colCount={5} />
+// 	</Provider>, 
+// 	document.getElementById('window-body')
+// );
