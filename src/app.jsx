@@ -13,7 +13,7 @@ class App extends React.Component {
 				<CoverPage />
 
 				<div className="component-wrapper">
-					<a href="#" className="component-link">Component : <em>Excel Grid</em></a>
+					<a href="https://github.com/ankushjamdagani/portfolio/tree/master/src/components" className="component-link">Component : <em>Excel Grid</em></a>
 					<div className="label-wrapper">
 						<span className="label">ReactJS</span>
 					</div>
@@ -24,7 +24,7 @@ class App extends React.Component {
 				</div>
 
 				<div className="component-wrapper">
-					<a href="#" className="component-link">Component : <em>Fractal Tree</em></a>
+					<a href="https://github.com/ankushjamdagani/portfolio/tree/master/src/components/fractal-tree" className="component-link">Component : <em>Fractal Tree</em></a>
 					<div className="label-wrapper">
 						<span className="label">ReactJS</span>
 					</div>
