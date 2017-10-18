@@ -33,7 +33,7 @@ const GridCell = ({data, rowIndex, colIndex, saveChanges, rowAdd, rowMove, rowRe
 	return (
 		<div className='grid-cell'>
 			{
-				colIndex === 0 && <div className="row-head">{String.fromCharCode(rowIndex+97)}</div>
+				/*colIndex === 0 && <div className="row-head">{String.fromCharCode(rowIndex+97)}</div>*/
 			}
 			<input 
 				type="text" 

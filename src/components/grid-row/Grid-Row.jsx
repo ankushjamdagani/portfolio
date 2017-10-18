@@ -12,7 +12,7 @@ const GridRow = ({data, rowIndex}) => {
 				rowIndex === 0 &&
 				<div className="grid-head">
 					{
-						data.map((item, i) => <div className="col-head" key={"col"+(i-1)}>{i-1}</div>)
+						/*data.map((item, i) => <div className="col-head" key={"col"+(i-1)}>{i-1}</div>)*/
 					}
 				</div>
 			}
