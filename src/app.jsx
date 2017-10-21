@@ -1,50 +1,23 @@
 import React from 'react';
 
+import { Provider } from 'react-redux';
 import { LoadingPage, CoverPage } from './views';
 
-import { Grid, FractalTree } from './components';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-class App extends React.Component {
-
-	render() {
-		return (
-			<div className="app">
-				{/*<LoadingPage />*/}
-				<CoverPage />
-
-				<div className="component-wrapper">
-					<a href="https://github.com/ankushjamdagani/portfolio/tree/master/src/components" className="component-link">Component : <em>Excel Grid</em></a>
-					<div className="label-wrapper">
-						<span className="label">ReactJS</span>
-					</div>
-					<div className="component-demo-info">Use formula input box. Focus on cell for more controls.</div>
-					<div className="component-demo">
-						<Grid rowCount={10} colCount={10} />
-					</div>
-				</div>
-
-				<div className="component-wrapper">
-					<a href="https://github.com/ankushjamdagani/portfolio/tree/master/src/components/fractal-tree" className="component-link">Component : <em>Fractal Tree</em></a>
-					<div className="label-wrapper">
-						<span className="label">ReactJS</span>
-					</div>
-					<div className="component-demo-info">Click on whitespace</div>
-					<div className="component-demo">
-			            <FractalTree
-			                x={0}
-			                y={window.innerHeight*.8}
-			                canvasHeight={window.innerHeight}
-			                canvasWidth={window.innerWidth}
-			                sizeBranch={105}
-			                angle={-45}
-			                speed={100}
-			                colorBranch='#ccc'
-			                colorLeaf='#ddd'/>
-					</div>
-				</div>
+const App = ({store}) => (
+	<Provider store={store}>
+		<Router>
+			<div>
+				<ul>
+					<li><Link to="/">Home</Link></li>
+					<li><Link to="/loading">Loading</Link></li>
+				</ul>
+				<Route exact path="/" component={CoverPage} />
+				<Route path="/loading" component={LoadingPage} />
 			</div>
-		)
-	}
-}
+	    </Router>
+	</Provider>
+)
 
 export default App;
