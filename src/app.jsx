@@ -9,11 +9,11 @@ const App = ({store}) => (
 	<Provider store={store}>
 		<Router>
 			<div>
-				<ul>
+				{/*<ul className="main-nav">
 					<li><Link to="/portfolio/">Home</Link></li>
 					<li><Link to="/portfolio/loading">Loading</Link></li>
-				</ul>
-				<Route exact path="/portfolio/" component={CoverPage} />
+				</ul>*/}
+				<Route exact path="/" component={CoverPage} />
 				<Route path="/portfolio/loading" component={LoadingPage} />
 			</div>
 	    </Router>

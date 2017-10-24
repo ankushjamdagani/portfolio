@@ -18,7 +18,7 @@ class CoverPage extends React.Component {
             this.setState({
                 begin: true
             })
-        }, 5000)
+        }, 1000)
     }
 
     render() {
