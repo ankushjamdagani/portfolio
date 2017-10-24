@@ -10,11 +10,11 @@ const App = ({store}) => (
 		<Router>
 			<div>
 				<ul>
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/loading">Loading</Link></li>
+					<li><Link to="/portfolio/">Home</Link></li>
+					<li><Link to="/portfolio/loading">Loading</Link></li>
 				</ul>
-				<Route exact path="/" component={CoverPage} />
-				<Route path="/loading" component={LoadingPage} />
+				<Route exact path="/portfolio/" component={CoverPage} />
+				<Route path="/portfolio/loading" component={LoadingPage} />
 			</div>
 	    </Router>
 	</Provider>
