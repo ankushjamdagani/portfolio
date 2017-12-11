@@ -1,4 +1,4 @@
-const grid = (state = {}, action) => {
+const gridReducer = (state = {}, action) => {
 	console.log(action);
 	switch(action.type) {
 		case 'GRID_INIT': 
@@ -201,4 +201,4 @@ const grid = (state = {}, action) => {
 	}
 }
 
-export default grid;
+export default gridReducer;
