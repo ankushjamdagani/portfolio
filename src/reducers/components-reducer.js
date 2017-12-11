@@ -91,6 +91,8 @@ const componentsReducer = (state = componentsInitialState, action) => {
 				activeComponentIndex
 			}
 		}
+		default: 
+			return state
 	}
 }
 

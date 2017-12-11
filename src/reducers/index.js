@@ -5,5 +5,5 @@ import componentsReducer from './components-reducer';
 
 export default combineReducers({
 	gridReducer,
-	combineReducers
+	componentsReducer
 });
