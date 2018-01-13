@@ -1,11 +1,23 @@
 const COMPONENTS_LIST = [
-		{
-			id: 0,
-			category: 0,
-			name: 'grid',
-			displayName: 'grid'
-		}
-	];
+	{
+		id: 0,
+		category: 0,
+		name: 'Grid',
+		displayName: 'grid'
+	},
+	{
+		id: 1,
+		category: 0,
+		name: 'FractalTree',
+		displayName: 'Fractal Tree'
+	},
+	{
+		id: 0,
+		category: 0,
+		name: 'Grid',
+		displayName: 'grid'
+	}
+];
 
 const CATEGORIES_LIST = [
 	'CAT1'

@@ -5,7 +5,8 @@ var math = require('mathjs');
 import './styles.scss';
 
 import { GridRow } from '../../components';
-import { csvGeneratedGrid, generateGrid, saveChanges } from '../../actions';
+import GridActions from '../../actions';
+const { csvGeneratedGrid, generateGrid, saveChanges } = GridActions;
 
 const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, computeCell}) => {
 	if(!data) {

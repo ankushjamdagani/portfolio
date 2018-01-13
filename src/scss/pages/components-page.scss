@@ -1,0 +1,111 @@
+.components-wrapper {
+    @extend .clearfix;
+    padding: 1em;
+
+    h1 {
+        font-size: 2em;
+        line-height: 1.5em;
+        padding-left: .5em;
+        margin: 1em 0;
+    }
+
+    .badge {
+        background: crimson;
+        border-radius: 2px;
+        border-bottom-right-radius: 2px;
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        margin: 0 .25em;
+        padding: .35em 1em .35em 1em;
+        position: absolute;
+        right: -1.25em;
+        top: .5em;
+
+        &:before {
+            content: '';
+            position: absolute;
+            height: 0;
+            width: 0;
+            right: calc(0em - .9em);
+            top: calc( 100% - .9em);
+            border: solid .9em transparent;
+            border-left-color: #98102a;
+            z-index: -1;
+        }
+    }
+    
+    .component-tile {
+        cursor: pointer;
+        float: left;
+        max-width: 320px;
+        padding: 1em;
+        width: 50%;
+        position: relative;
+        text-transform: capitalize;
+        font-weight: 100;
+
+        &:after {
+            content: '';
+            background: rgba(255, 0, 0, 0.05);
+            bottom: 1.5em;
+            left: 1.5em;
+            // transform: translate(-50%, -50%);
+            width: 100%;
+            width: calc(100% - 3em);
+            height: 0;
+            margin: 0 auto;
+            position: absolute;
+            z-index: 11;
+            transition: all .5s;
+        }
+
+        &:hover:after {
+            height: calc(100% - 3em);
+        }
+
+        &:hover .title:after {
+            width: 50%;
+        }
+
+        .component-tile-wrapper {
+            background: #fff;
+            border: solid 1px #e1e1e1;
+            box-shadow: 0 0 1em rgba(0,0,0,.05);
+            flex: 1;
+            padding-top: 2em;
+            position: relative;
+            text-align: left;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1em;
+            letter-spacing: 1px;
+            padding: .25em 1em .5em;
+            position: relative;
+            margin-bottom: .5em;
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 25%;
+                display: block;
+                height: 2px;
+                background: $primary-color;
+                left: 0;
+                top: 100%;
+                transition: .75s;
+            }
+        }
+
+        .category {
+            font-size: .85em;
+            color: #999;
+            padding: 0.5em 1.2em .75em;
+            font-style: italic;
+            position: relative;
+        }
+    }
+}

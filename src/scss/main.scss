@@ -14,6 +14,7 @@
 
 @import "pages/cover-page.scss";
 @import "pages/loading-page.scss";
+@import "pages/components-page.scss";
 
 * {
 	box-sizing: border-box;
@@ -31,6 +32,8 @@ body {
 	background: $lighter-grey;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
+
+	font-weight: 100;
 }
 
 .app {

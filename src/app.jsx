@@ -13,12 +13,12 @@ const App = ({store}) => (
 	<Provider store={store}>
 		<Router>
 			<div>
-				<ul className="main-nav">
+				{/* <ul className="main-nav">
 					<li><Link to="/">Home</Link></li>
 					<li><Link to="/components">Components</Link></li>
 					<li><Link to="/components/loading">Components - Loading</Link></li>
 					<li><Link to="/components/loading?s=123">Components - Loading with Query</Link></li>
-				</ul>
+				</ul> */}
 
 				{/*
 					Yeah this is not exact match for the route. For all routes the CoverPage will be rendered
