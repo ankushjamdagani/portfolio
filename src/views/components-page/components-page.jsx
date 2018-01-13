@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ComponentsPage = (props) => {
+	console.log('======')
 	console.log(props);
 	console.log(this);
 	return (

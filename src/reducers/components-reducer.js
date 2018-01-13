@@ -12,8 +12,8 @@ const CATEGORIES_LIST = [
 ]
 
 const componentsInitialState = {
-	activeCategoryIndex: null,
-	activeComponentIndex: null,
+	activeCategoryIndex: -1,
+	activeComponentIndex: -1,
 	categories: CATEGORIES_LIST,
 	filteredComponents: COMPONENTS_LIST
 }
@@ -22,13 +22,13 @@ const componentsReducer = (state = componentsInitialState, action) => {
 	switch (action.type) {
 		case 'FILTER_BY_CATEGORY': {
 			let category = CATEGORIES_LIST.indexof(action.payload.category);
-			let filteredComponents = state.filteredComponents.filter(component => component.category === CATEGORIES_LIST[category]);
+			let filteredComponents = state.filteredComponents.filter(component => component.category === category);
 
 			return {
 				...state,
 				filteredComponents,
-				activeCategoryIndex: CATEGORIES_LIST[category],
-				activeComponentIndex: filteredComponents.length > 0 ? 0 : -1
+				activeCategoryIndex: category,
+				activeComponentIndex: filteredComponents.length || -1
 			};
 		}
 		case 'FILTER_BY_ID': {
@@ -49,9 +49,9 @@ const componentsReducer = (state = componentsInitialState, action) => {
 		}
 		case 'SEARCH': {
 			let filteredComponents = COMPONENTS_LIST.filter(component => (
-					filteredComponents[i].id + '' === action.payload.searchStr || 
-					filteredComponents[i].name.indexOf(action.payload.searchStr) !== -1 ||  
-					filteredComponents[i].displayName.indexOf(action.payload.searchStr) !== -1
+					component[i].id + '' === action.payload.searchStr || 
+					component[i].name.indexOf(action.payload.searchStr) !== -1 ||  
+					component[i].displayName.indexOf(action.payload.searchStr) !== -1
 				));
 
 			return {
