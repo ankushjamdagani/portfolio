@@ -13,7 +13,7 @@ class LoadingPage extends React.Component {
 			<div className="loading-page page-view">
 				<Loader />
 				<h1 className="heading">Comming Soon !!</h1>
-				{/* <Timer to={launchTime} from={today} interval={1000}/> */}
+				<Timer to={launchTime} from={today} interval={1000}/>
 				<div className="footer">
 					<div></div>
 					<div></div>

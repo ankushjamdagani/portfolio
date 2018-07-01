@@ -24,7 +24,7 @@ const App = ({store}) => (
 					Yeah this is not exact match for the route. For all routes the CoverPage will be rendered
 				*/}
 				<Route path="/" exact component={CoverPage} />
-				{/*<Route path="/portfolio/loading" component={LoadingPage} />*/}
+				<Route path="/portfolio/loading" component={LoadingPage} />
 				<Route path="/components/" component={ComponentsPage} />
 			</div>
 	    </Router>

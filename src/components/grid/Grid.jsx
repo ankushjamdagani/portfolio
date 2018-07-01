@@ -102,8 +102,9 @@ const Grid = ({data, colCount, rowCount, generateGrid, csvGeneratedGrid, compute
 }
 
 const mapStateToProps = (state, ownProps) => {
+	console.log(state);
 	return {
-		data: state.grid && state.grid.data ? state.grid.data : null,
+		data: state.gridReducer && state.gridReducer.data ? state.gridReducer.data : null,
 		...ownProps
 	};
 }

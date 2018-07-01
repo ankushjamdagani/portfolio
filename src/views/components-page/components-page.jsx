@@ -15,7 +15,6 @@ const ComponentsPage = ({activeCategoryIndex, activeComponentIndex, categories, 
 	}
 
 	const createComponentTile = (component, key) => {
-		console.log(component);
 		
 		return <div className="component-tile" key={key}>
 			<div className="component-tile-wrapper">
@@ -40,7 +39,6 @@ const ComponentsPage = ({activeCategoryIndex, activeComponentIndex, categories, 
 
 const mapStateToProps = (reduxState, ownProps) => {
 	const componentsReducer = reduxState && reduxState.componentsReducer;
-	console.log(reduxState);
 	
 	return {
 		...componentsReducer

@@ -12,3 +12,5 @@ ReactDOM.render(
 	<App store={store} />, 
 	document.getElementById('root')
 );
+
+console.info('Hello User!!', 'color: red')
